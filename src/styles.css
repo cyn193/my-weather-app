@@ -1,0 +1,30 @@
+.container {
+  background: rgb(253, 253, 137);
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.left-side {
+  float: right;
+}
+
+.temperature {
+  font-size: 55px;
+  font-weight: bolder;
+}
+
+.weekly-forecast {
+  list-style: none;
+  padding: 4px;
+  margin-top: 8px;
+}
+
+.weekly-temp {
+  list-style: none;
+}
+
+.temperature {
+  float: right;
+}
