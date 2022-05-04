@@ -4,13 +4,16 @@ function showTemperature(response) {
   h3.innerHTML = `${temperature}°F`;
   let feelsLike = Math.round(response.data.main.feels_like);
   let feel = document.querySelector("#feels-like");
-  feel.innerHTML = `Feels like 🌡️  ${feelsLike}°F`;
+  feel.innerHTML = `Feels like: 🌡️  ${feelsLike}°F`;
   let humid = response.data.main.humidity;
   let humidity = document.querySelector("#humidity-rate");
-  humidity.innerHTML = `Humidity 💧 ${humid}`;
+  humidity.innerHTML = `Humidity: 💧 ${humid}`;
   let wind = response.data.wind.speed;
   let windSpeed = document.querySelector("#wind-rate");
-  windSpeed.innerHTML = `Wind speed 🌀 ${wind}km/h`;
+  windSpeed.innerHTML = `Wind speed: 🌀 ${wind}km/h`;
+  let description = response.data.weather[0].description;
+  let weatherType = document.querySelector("#weather-type");
+  weatherType.innerHTML = `You can expect: ${description}`;
 }
 
 function search(event) {
