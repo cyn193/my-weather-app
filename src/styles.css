@@ -25,6 +25,8 @@ h1 {
   list-style: none;
 }
 
-.temperature {
+.temp-emoji img {
+  height: 70px;
+  width: 70px;
   float: right;
 }
