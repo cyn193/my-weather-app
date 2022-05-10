@@ -1,7 +1,7 @@
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let h3 = document.querySelector("h3");
-  h3.innerHTML = `${temperature}°F`;
+  h3.innerHTML = `${temperature}`;
   let feelsLike = Math.round(response.data.main.feels_like);
   let feel = document.querySelector("#feels-like");
   feel.innerHTML = `Feels like: 🌡️  ${feelsLike}°F`;
@@ -19,6 +19,7 @@ function showTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function search(event) {
@@ -35,9 +36,17 @@ function search(event) {
   axios.get(`${apiUrl}`).then(showTemperature);
 }
 
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  alert("link clicked");
+}
+
 let form = document.querySelector("#user-form");
 form.addEventListener("submit", search);
 
 let currentTime = new Date();
 let h6 = document.querySelector("h6");
 h6.innerHTML = `${currentTime}`;
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
