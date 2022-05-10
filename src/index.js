@@ -7,13 +7,18 @@ function showTemperature(response) {
   feel.innerHTML = `Feels like: 🌡️  ${feelsLike}°F`;
   let humid = response.data.main.humidity;
   let humidity = document.querySelector("#humidity-rate");
-  humidity.innerHTML = `Humidity: 💧 ${humid}`;
+  humidity.innerHTML = `Humidity: 💧 ${humid}%`;
   let wind = response.data.wind.speed;
   let windSpeed = document.querySelector("#wind-rate");
   windSpeed.innerHTML = `Wind speed: 🌀 ${wind}km/h`;
   let description = response.data.weather[0].description;
   let weatherType = document.querySelector("#weather-type");
-  weatherType.innerHTML = `You can expect: ${description}`;
+  weatherType.innerHTML = `Expect: ${description}`;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function search(event) {
@@ -34,5 +39,5 @@ let form = document.querySelector("#user-form");
 form.addEventListener("submit", search);
 
 let currentTime = new Date();
-let h4 = document.querySelector("h4");
-h4.innerHTML = `${currentTime}`;
+let h6 = document.querySelector("h6");
+h6.innerHTML = `${currentTime}`;
