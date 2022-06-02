@@ -37,28 +37,10 @@
               current location</button
             >📍
             <br />
-
-            <div class="weekdays">
-              <ul class="weekly-forecast">
-                <strong>WEEKLY FORECAST</strong>
-                <br />
-                <li>Sunday 50°</li>
-                <li>Monday 50°</li>
-                <li>Tuesday 50°</li>
-                <li>Wednesday 50°</li>
-                <li>Thursday 50°</li>
-                <li>Friday 50°</li>
-                <li>Saturday 50°</li>
-              </ul>
-            </div>
-
-            <button
-              type="click"
-              id="current-location"
-              class="btn btn-info btn-lg"
-            >
-              Refresh ↩️
-            </button>
+            <br />
+            <strong>WEEKLY FORECAST</strong>
+            <br />
+            <div class="weekdays" id="forecast"></div>
           </div>
         </div>
 
@@ -77,6 +59,7 @@
                 id="icon"
               />
             </span>
+
             <div id="feels-like">Feels like 🌡️ 40</div>
 
             <div id="weather-type">Expect: cloudy</div>
@@ -85,6 +68,13 @@
             <br />
 
             <h6></h6>
+            <button
+              type="click"
+              id="current-location"
+              class="btn btn-info btn-lg"
+            >
+              Refresh ↩️
+            </button>
           </div>
         </div>
       </div>

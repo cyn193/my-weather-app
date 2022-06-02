@@ -2,6 +2,14 @@
   background: rgb(253, 253, 137);
 }
 
+.max-temp {
+  font-weight: bold;
+}
+
+.min-temp {
+  opacity: 0.6;
+}
+
 h1 {
   font-weight: bold;
 }

@@ -1,3 +1,55 @@
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "254df1ba559cbf726420dd388597e410";
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+  <div> <ul class="weekly-forecast">
+     <li>
+       ${formatDay(forecastDay.dt)}
+       <img
+         src="http://openweathermap.org/img/wn/${
+           forecastDay.weather[0].icon
+         }@2x.png"
+         width="30"
+       />
+       <span class="max-temp"> ${Math.round(
+         forecastDay.temp.max
+       )}°F </span>|<span class="min-temp"> ${Math.round(
+          forecastDay.temp.min
+        )}°F</span>
+     </li>
+   </ul>
+   </div>
+   `;
+    }
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let h3 = document.querySelector("h3");
@@ -20,6 +72,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(event) {
@@ -38,7 +92,7 @@ function search(event) {
 
 function displayCelsiusTemp(event) {
   event.preventDefault();
-  alert("link clicked");
+  alert("currently working on conversion");
 }
 
 let form = document.querySelector("#user-form");
