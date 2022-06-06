@@ -51,7 +51,8 @@ function displayForecast(response) {
 }
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  fahrenheitTemp = response.data.main.temp;
+  let temperature = Math.round(fahrenheitTemp);
   let h3 = document.querySelector("h3");
   h3.innerHTML = `${temperature}`;
   let feelsLike = Math.round(response.data.main.feels_like);
@@ -92,8 +93,18 @@ function search(event) {
 
 function displayCelsiusTemp(event) {
   event.preventDefault();
-  alert("currently working on conversion");
+  celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = Math.round(celsiusTemp);
 }
+
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitTemp = null;
 
 let form = document.querySelector("#user-form");
 form.addEventListener("submit", search);
@@ -104,3 +115,6 @@ h6.innerHTML = `${currentTime}`;
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
